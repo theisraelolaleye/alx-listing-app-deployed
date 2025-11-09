@@ -1,4 +1,4 @@
-import herobg from '@/public/assets/heroBG.svg'
+import herobg from '../public/assets/heroBG.svg'
 import { PropertyProps } from '@/interfaces';
 
 
