@@ -1,76 +1,49 @@
-import React from 'react';
-import Image from 'next/image';
-import { PropertyProps } from '@/interfaces';
-
-interface PropertyCardProps {
-  property: PropertyProps;
-}
+import React from "react";
+import Image from "next/image";
+import { PropertyCardProps } from "@/interfaces";
 
 const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+    <div className="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
       {/* Property Image */}
-      <div className="relative h-48">
+      <div className="relative h-48 w-full">
         <Image
           src={property.image}
-          alt={property.name}
+          alt={property.title}
           fill
           className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority
         />
-        {property.discount && (
-          <div className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-sm font-semibold z-10">
-            {property.discount}
-          </div>
-        )}
       </div>
 
-      {/* Property Content */}
+      {/* Property Details */}
       <div className="p-4">
-        {/* Property Name */}
-        <h3 className="text-lg font-semibold text-gray-900 mb-2 truncate">
-          {property.name}
+        <h3 className="text-lg font-semibold text-gray-800 truncate">
+          {property.title}
         </h3>
+        <p className="text-gray-600 text-sm mt-1">{property.location}</p>
 
-        {/* Location */}
-        <p className="text-gray-600 text-sm mb-2">
-          {property.address.city}, {property.address.state}, {property.address.country}
-        </p>
-
-        {/* Rating */}
-        <div className="flex items-center mb-3">
-          <div className="flex items-center">
-            <span className="text-yellow-400 mr-1">★</span>
-            <span className="text-sm font-medium text-gray-700">{property.rating}</span>
-          </div>
-        </div>
-
-        {/* Property Features */}
-        <div className="flex items-center justify-between text-sm text-gray-600 mb-3">
-          <span>{property.offers.bed} bed</span>
-          <span>{property.offers.shower} bath</span>
-          <span>{property.offers.occupants} guests</span>
-        </div>
-
-        {/* Categories */}
-        <div className="flex flex-wrap gap-1 mb-3">
-          {property.category.slice(0, 2).map((cat, index) => (
-            <span
-              key={index}
-              className="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs"
-            >
-              {cat}
-            </span>
-          ))}
-          {property.category.length > 2 && (
-            <span className="text-gray-500 text-xs">+{property.category.length - 2} more</span>
-          )}
-        </div>
-
-        {/* Price */}
-        <div className="flex items-center justify-between">
-          <div>
-            <span className="text-xl font-bold text-gray-900">${property.price}</span>
-            <span className="text-gray-600 text-sm ml-1">/ night</span>
+        <div className="mt-3 flex justify-between items-center">
+          <span className="text-lg font-bold text-blue-600">
+            ${property.price}
+          </span>
+          <div className="flex space-x-2">
+            {property.bedrooms && (
+              <span className="text-xs bg-gray-100 px-2 py-1 rounded">
+                {property.bedrooms} Bed
+              </span>
+            )}
+            {property.bathrooms && (
+              <span className="text-xs bg-gray-100 px-2 py-1 rounded">
+                {property.bathrooms} Bath
+              </span>
+            )}
+            {property.area && (
+              <span className="text-xs bg-gray-100 px-2 py-1 rounded">
+                {property.area}
+              </span>
+            )}
           </div>
         </div>
       </div>

@@ -1,25 +1,17 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
 import PropertyCard from "@/components/property/PropertyCard";
-
-import Image from "next/image";
+import { Property } from "@/interfaces";
 import { Geist, Geist_Mono } from "next/font/google";
-import Header from "../components/layout/Header";
-import Footer from "../components/layout/Footer";
-import AccomodationType from "../components/layout/AccomodationType";
-import { ACCOMODATIONTYPES } from "../constants";
-import Link from "next/link";
-import { Images } from "../constants";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
 export default function Home() {
   const [properties, setProperties] = useState([]);
@@ -71,7 +63,7 @@ export default function Home() {
       </div> */}
 
       <div className="grid grid-cols-3 gap-4">
-        {properties.map((property) => (
+        {properties.map((property: Property) => (
           <PropertyCard key={property.id} property={property} />
         ))}
       </div>
