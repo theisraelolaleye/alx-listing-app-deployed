@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import PropertyCard from "@/components/property/PropertyCard";
 import { Property } from "@/interfaces";
-import { Geist, Geist_Mono } from "next/font/google";
+// import { Geist, Geist_Mono } from "next/font/google";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
