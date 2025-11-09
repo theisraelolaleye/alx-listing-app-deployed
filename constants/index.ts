@@ -1,10 +1,10 @@
-import herobg from '/assets/heroBG.svg'
+// import herobg from '/assets/heroBG.svg'
 import { PropertyProps } from '@/interfaces';
 
 
-export const Images = {
-  herobg,
-};
+// export const Images = {
+//   herobg,
+// };
 
 
 export const PROPERTYLISTINGSAMPLE: PropertyProps[] = [
